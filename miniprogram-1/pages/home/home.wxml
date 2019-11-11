@@ -1,0 +1,2 @@
+<view class="intro">时间{{time}}</view>
+<button bindtap="getTime">获取时间</button>

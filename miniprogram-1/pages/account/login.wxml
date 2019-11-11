@@ -1,0 +1,18 @@
+<view class="content">
+  <view class="account">
+    <view class="title">账号</view>
+    <view class="num">
+      <input bindinput="bindUserNameInput" value="Admin" placeholder="请输入用户名" placeholder-style="color:#999999;" />
+    </view>
+  </view>
+  <view class="hr"></view>
+  <view class="account">
+    <view class="title">密码</view>
+    <view class="num">
+      <input bindinput="bindPasswordInput" value="Qq111." placeholder="请输入密码" password placeholder-style="color:#999999;" />
+    </view>
+  </view>
+  <view class="hr"></view>
+  <button class="btn" bindtap='normalLogin' type="primary" loading="{{loading}}">账号登录</button>
+  <button class="btn" bindtap='wxLogin' type="primary" disabled="true">微信登录</button>
+</view>
