@@ -1,6 +1,6 @@
 const app = getApp();
-import xx from "../../tool/request.js"
-import ss from "../../tool/show.js"
+import xx from "../../../tool/request.js"
+import ss from "../../../tool/show.js"
 
 Page({
   data: {
@@ -8,7 +8,7 @@ Page({
     password: 'Qq111.',
     loading: false
   },
-  //usernma
+  //username
   bindUserNameInput: function(e) {
     this.setData({
       userName: e.detail.value
@@ -20,7 +20,7 @@ Page({
       password: e.detail.value
     })
   },
-  //按钮loding状态
+  //设置按钮loding状态
   setLoading: function(e) {
     this.setData({
       loading: !this.data.loading
@@ -70,36 +70,30 @@ Page({
             wx.setStorageSync("token", token);
             this.userInfo();
             wx.switchTab({
-             // url: '/pages/home/home',
-              url: '/pages/me/me',
-
+              // url: '/pages/home/home',
+              url: '/pages/me/index',
             })
           }
         } else {
           ss.showNone(res.data.message);
-          // wx.showToast({
-          //   title: res.data.message,
-          //   duration: 1500,
-          //   icon: 'none'
-          // })
           // 结束loding
           this.setLoading();
         }
       },
-      fail: () => {
+      fail() {
         ss.showNone("网络异常");
         this.setLoading();
       }
     })
   },
   //获取用户信息
-  userInfo: () => {
+  userInfo() {
     xx.xGet('Account/Info', res => {
       if (res.data.code !== 200) {
         return false;
       }
-      //app.globalData.userInfo=res.data.data;
       //存起来
+      //app.globalData.userInfo=res.data.data;
       wx.setStorageSync('info', res.data.data);
     })
   },
@@ -127,8 +121,7 @@ Page({
     let token = wx.getStorageSync("token");
     if (token) {
       wx.switchTab({
-       // url: '/pages/home/home',
-        url: '/pages/me/me',
+        url: '/pages/me/index',
       })
     } else {
       return false;

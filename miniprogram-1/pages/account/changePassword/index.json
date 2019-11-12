@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-toptips": "../../components/toptips/toptips",
+    "mp-form": "../../components/form/form",
+    "mp-cells": "../../components/cells/cells",
+    "mp-cell": "../../components/cell/cell"
+  },
+  "navigationBarTitleText": "更改密码"
+}

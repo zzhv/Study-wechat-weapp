@@ -1,0 +1,25 @@
+<view class="userinfo">
+  <image style="height:350rpx;width:100%" src="/image/background.jpg"></image>
+  <view class="userContent">
+    <image class="userinfo-avatar" src="/image/avatar.jpg" background-size="cover"></image>
+    <view class="userNameContext">
+      <text class="userinfo-userName">账号：{{userInfo.userName}}</text>
+    </view>
+    <view class="realNameContext">
+      <text class="userinfo-realName">{{userInfo.realName}}</text>
+    </view>
+
+  </view>
+</view>
+<view class="hr"></view>
+<view bindtap="navigateToChangePassword" class="tableviewcell">
+  <image src="/image/account.png" />
+  <text>更改密码</text>
+</view>
+<view bindtap="navigateToAboutus" class="tableviewcell">
+  <image src="/image/information.png" />
+  <text>关于我们</text>
+</view>
+<view wx-if="{{false}}" style="margin-top:55%">
+  <button type="warn" loading="{{loading}}">注销登录</button>
+</view>

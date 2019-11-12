@@ -6,29 +6,32 @@ Component({
       if (typeof this.getTabBar === 'function' &&
         this.getTabBar()) {
         this.getTabBar().setData({
-          selected: 1
+          selected: 0
         })
       }
+
     }
   },
-  /**
-   * 页面的初始数据
-   */
   data: {
-    userInfo: {
-      userName:""
-    }
+    time: ''
   },
   methods: {
+    getTime: function() {
+      xx.xGet({
+        url: "Home/Time",
+        success: res => {
+          console.log(res)
+          this.setData({
+            time: res.data
+          })
+        }
+      });
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-      var uInfo = wx.getStorageSync('info');
-      console.log(uInfo)
-
-      this.setData({ userInfo: uInfo })
-
+      this.getTime();
     },
 
     /**
@@ -42,7 +45,7 @@ Component({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-     
+
     },
 
     /**

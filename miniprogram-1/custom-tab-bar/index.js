@@ -2,7 +2,7 @@ Component({
   data: {
     selected: 0,
     color: "#7A7E83",
-    selectedColor: "#3cc51f",
+    selectedColor: "#1296db",
     list: [{
       pagePath: "/pages/home/home",
       iconPath: "/image/icon_component.png",
@@ -12,7 +12,7 @@ Component({
       pagePath: "/pages/me/me",
       iconPath: "/image/icon_API.png",
       selectedIconPath: "/image/icon_API_HL.png",
-      text: "自己"
+      text: "个人"
     }]
   },
   attached() {},
