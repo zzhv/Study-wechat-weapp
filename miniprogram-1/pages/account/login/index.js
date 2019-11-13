@@ -88,13 +88,16 @@ Page({
   },
   //获取用户信息
   userInfo() {
-    xx.xGet('Account/Info', res => {
-      if (res.data.code !== 200) {
-        return false;
+    xx.xGet({
+      url: 'Account/Info',
+      success: res => {
+        if (res.data.code !== 200) {
+          return false;
+        }
+        //存起来
+        //app.globalData.userInfo=res.data.data;
+        wx.setStorageSync('info', res.data.data);
       }
-      //存起来
-      //app.globalData.userInfo=res.data.data;
-      wx.setStorageSync('info', res.data.data);
     })
   },
   //LocalStorage里面有Token吗？

@@ -20,7 +20,6 @@ Component({
       xx.xGet({
         url: "Home/Time",
         success: res => {
-          console.log(res)
           this.setData({
             time: res.data
           })
