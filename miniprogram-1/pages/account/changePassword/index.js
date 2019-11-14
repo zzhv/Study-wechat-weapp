@@ -6,9 +6,6 @@ Component({
    * 页面的初始数据
    */
   data: {
-    // oldPassword: null,
-    // newPassword: null,
-    // checkPassword: null,
     changeFormData: {
 
     },
@@ -58,20 +55,6 @@ Component({
     //   })
     //   console.log(this.data.changeFormData)
     // },
-    // // 新密码
-    // bindNewPasswordInput: function(e) {
-    //   this.setData({
-    //     newPassword: e.detail.value,
-    //     [`changeFormData.newPassword`]: e.detail.value
-    //   })
-    // },
-    // // 确认密码
-    // bindCheckPasswordInput: function(e) {
-    //   this.setData({
-    //     checkPassword: e.detail.value,
-    //     [`changeFormData.checkPassword`]: e.detail.value
-    //   })
-    // },
     // 设置按钮状态
     setLoading: function(e) {
       this.setData({
@@ -93,17 +76,24 @@ Component({
           }
         } else {
           xx.xPost({
-            url: 'user/changePassword',
+            url: 'account/changePassword',
             data: this.data.changeFormData,
             success: res => {
-              cosnole.log(res)
+              if (res.data.code === 200) {
+                //清空信息
+                wx.clearStorageSync();
+                //重新登录
+                wx.reLaunch({
+                  url: '/pages/account/login/index?reLogin=true',
+                });
+              } else {
+                ss.showNone(res.data.message)
+              }
             }
-          })
-          wx.showToast({
-            title: '校验通过'
           })
         }
       })
+      this.setLoading();
     },
 
     /**

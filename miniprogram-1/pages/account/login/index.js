@@ -5,7 +5,7 @@ import ss from "../../../tool/show.js"
 Page({
   data: {
     userName: 'Admin',
-    password: 'Qq111.',
+    password: '123456',
     loading: false
   },
   //username
@@ -114,11 +114,15 @@ Page({
    */
   onLoad: function(options) {
     //如果Token已过期
-    if (options.TokenExpired) {
+    if (options.tokenExpired) {
       wx.showToast({
         title: '身份已过期，请重新登录',
         duration: 1500,
         icon: 'none'
+      })
+    } else if (options.reLogin) {
+      wx.showToast({
+        title: '请重新登录',
       })
     }
     let token = wx.getStorageSync("token");

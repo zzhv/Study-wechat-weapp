@@ -76,7 +76,7 @@ function xPost({
         wx.clearStorageSync();
         // 转到登录页面
         wx.reLaunch({
-          url: '/pages/account/login/index?TokenExpired=true'
+          url: '/pages/account/login/index?tokenExpired=true'
         })
       } else if (res.statusCode === 200) {
         if (success && typeof success === "function") {

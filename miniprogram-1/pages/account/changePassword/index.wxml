@@ -4,32 +4,6 @@
     <view class="weui-cells__group weui-cells__group_form">
       <view class="weui-cells weui-cells_form">
         <mp-form id="changeForm" rules="{{rules}}" models="{{changeFormData}}">
-          <!-- <mp-cells>
-            <view class="weui-cell">
-              <view class="weui-cell__hd">
-                <label class="weui-label">原密码</label>
-              </view>
-              <mp-cell prop="oldPassword" class="weui-cell__bd">
-                <input class="weui-input" data-field="oldPassword" bindinput="formInputChange" type="password" placeholder="请输入原密码" />
-              </mp-cell>
-            </view>
-            <view class="weui-cell">
-              <view class="weui-cell__hd">
-                <label class="weui-label">新密码</label>
-              </view>
-              <mp-cell prop="newPassword" class="weui-cell__bd">
-                <input class="weui-input" data-field="newPassword" bindinput="formInputChange" type="password" placeholder="请输入原密码" />
-              </mp-cell>
-            </view>
-            <view class="weui-cell">
-              <view class="weui-cell__hd">
-                <label class="weui-label">确认密码</label>
-              </view>
-              <mp-cell prop="checkPassword" class="weui-cell__bd">
-                <input class="weui-input" data-field="checkPassword" bindinput="formInputChange" type="password" placeholder="请确认密码" />
-              </mp-cell>
-            </view>
-          </mp-cells> -->
           <mp-cells>
             <mp-cell prop="oldPassword" title="原密码" ext-class="">
               <input type="password" bindinput="formInputChange" data-field="oldPassword" class="weui-input" placeholder="请输入原密码" />
@@ -41,7 +15,6 @@
               <input type="password" bindinput="formInputChange" data-field="checkPassword" class="weui-input" placeholder="请再输入新密码" />
             </mp-cell>
           </mp-cells>
-
         </mp-form>
       </view>
     </view>

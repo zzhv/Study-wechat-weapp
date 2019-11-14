@@ -60,7 +60,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    
+    xx.xGet({
+      url: 'Account/Info',
+      success: res => {
+        if (res.data.code !== 200) {
+          return false;
+        }
+        this.setData({
+          userInfo: res.data.data
+        });
+        wx.setStorageSync('info', res.data.data);
+        wx.stopPullDownRefresh();
+      }
+    })
   },
 
   /**
