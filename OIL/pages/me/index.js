@@ -1,6 +1,10 @@
 const app = getApp();
 import xx from "../../tool/request.js"
 import ss from "../../tool/show.js"
+import {
+  codes
+} from "../../tool/codes.js"
+
 Page({
   /**
    * 页面的初始数据
@@ -63,13 +67,12 @@ Page({
     xx.xGet({
       url: 'Account/Info',
       success: res => {
-        if (res.data.code !== 200) {
-          return false;
+        if (res.data.code === codes.success) {
+          this.setData({
+            userInfo: res.data.data
+          });
+          wx.setStorageSync('info', res.data.data);
         }
-        this.setData({
-          userInfo: res.data.data
-        });
-        wx.setStorageSync('info', res.data.data);
         wx.stopPullDownRefresh();
       }
     })

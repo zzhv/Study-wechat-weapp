@@ -1,6 +1,9 @@
 const app = getApp();
 import xx from "../../../tool/request.js"
 import ss from "../../../tool/show.js"
+import {
+  codes
+} from "../../../tool/codes.js"
 
 Page({
   data: {
@@ -62,23 +65,23 @@ Page({
         UserName: this.data.userName,
         Password: this.data.password
       },
-      success: (res) => {
+      success: res => {
         let data = res.data;
-        if (data.code === 200) {
+        if (data.code === codes.success) {
           let token = data.data.token;
           if (token) {
             wx.setStorageSync("token", token);
             this.userInfo();
             wx.switchTab({
-              // url: '/pages/home/home',
-              url: '/pages/me/index',
+               url: '/pages/home/index',
+             // url: '/pages/me/index',
             })
           }
         } else {
           ss.showNone(res.data.message);
-          // 结束loding
-          this.setLoading();
         }
+        // 结束loding
+        this.setLoading();
       },
       fail() {
         ss.showNone("网络异常");
@@ -91,35 +94,30 @@ Page({
     xx.xGet({
       url: 'Account/Info',
       success: res => {
-        if (res.data.code !== 200) {
-          return false;
+        if (res.data.code === codes.success) {
+          //app.globalData.userInfo=res.data.data;
+          wx.setStorageSync('info', res.data.data);
         }
-        //存起来
-        //app.globalData.userInfo=res.data.data;
-        wx.setStorageSync('info', res.data.data);
       }
     })
   },
   //LocalStorage里面有Token吗？
-  doesTokenEmpty: function() {
-    let token = wx.getStorageSync("token");
-    if (token) {
-      wx.switchTab({
-        url: '/pages/home/home',
-      })
-    }
-  },
+  // doesTokenEmpty: function() {
+  //   let token = wx.getStorageSync("token");
+  //   if (token) {
+  //     wx.switchTab({
+  //       url: '/pages/home/index',
+  //     })
+  //   }
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     //如果Token已过期
     if (options.tokenExpired) {
-      wx.showToast({
-        title: '身份已过期，请重新登录',
-        duration: 1500,
-        icon: 'none'
-      })
+      ss.shownone('身份已过期，请重新登录')
+      //如果成功修改了密码
     } else if (options.reLogin) {
       wx.showToast({
         title: '请重新登录',
@@ -128,7 +126,7 @@ Page({
     let token = wx.getStorageSync("token");
     if (token) {
       wx.switchTab({
-        url: '/pages/me/index',
+        url: '/pages/home/index',
       })
     } else {
       return false;

@@ -1,5 +1,8 @@
 const app = getApp();
 import xx from "../../tool/request.js"
+import {
+  codes
+} from "../../tool/codes.js"
 Component({
   pageLifetimes: {
     show() {
@@ -20,9 +23,14 @@ Component({
       xx.xGet({
         url: "Home/Time",
         success: res => {
-          this.setData({
-            time: res.data
-          })
+          const {
+            data
+          } = res.data;
+          if (res.data.code === codes.success) {
+            this.setData({
+              time: data
+            })
+          }
         }
       });
     },

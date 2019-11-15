@@ -2,9 +2,12 @@
 对wx.request进行一点简单封装
 */
 const apiHost = getApp().globalData.URL;
+import {
+  codes
+} from "codes.js"
+import ss from "show.js"
 
 /** 
- * @不需要传参数
  * @param url:String  require(必需) 请求地址相对路径
  * @param data:Object   可选  请求数据
  * @param success:Function  可选   成功回调函数
@@ -23,7 +26,7 @@ function xGet({
     header: {
       Authorization: 'Bearer ' + wx.getStorageSync("token")
     },
-    success: (res) => {
+    success: res => {
       //如果Token过期
       if (res.header.TokenExpired) {
         wx.clearStorageSync();
@@ -33,6 +36,8 @@ function xGet({
         })
       } else if (res.statusCode === 200) {
         if (success && typeof success === "function") {
+          //有message的统一弹
+          ss.showNone(res.data.message);
           success(res);
         }
       }
