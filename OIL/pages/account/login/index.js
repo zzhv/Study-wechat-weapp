@@ -73,8 +73,8 @@ Page({
             wx.setStorageSync("token", token);
             this.userInfo();
             wx.switchTab({
-               url: '/pages/home/index',
-             // url: '/pages/me/index',
+              url: '/pages/options/index',
+              // url: '/pages/me/index',
             })
           }
         } else {
@@ -126,7 +126,7 @@ Page({
     let token = wx.getStorageSync("token");
     if (token) {
       wx.switchTab({
-        url: '/pages/home/index',
+        url: '/pages/options/index',
       })
     } else {
       return false;

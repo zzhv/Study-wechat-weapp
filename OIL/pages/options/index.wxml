@@ -1,0 +1,28 @@
+<!--pages/category/category.wxml-->
+<view class="container">
+  <scroll-view class='nav_left' scroll-y='true'>
+    <block wx:for="{{cateItems}}" wx:key="{{index}}">
+      <view class="nav_left_items {{curNav==item.cateId?'active':''}}" bindtap="switchRightTab" data-index='{{index}}' data-id="{{item.cateId}}">{{item.cateName}}</view>
+    </block>
+  </scroll-view>
+  <scroll-view class="nav_right" scroll-y="true">
+    <!--如果有数据，才遍历项-->
+    <view wx:if="{{cateItems[curIndex].children.length>0}}">
+      <block wx:for="{{cateItems[curIndex].children}}" wx:key="{{index}}">
+        <view class="nav_right_items">
+          <!--界面跳转 -->
+          <navigator url="../../detail/detail">
+            <image src="../../image/options.png"></image>
+            <!-- <image src="{{item.image}}"></image> -->
+            <text>{{item.name}}</text>
+          </navigator>
+        </view>
+      </block>
+    </view>
+    <!--如果无数据，则显示数据-->
+    <view class="nocate" wx:else>
+      <image src="../../image/options.png"></image>
+      <text>该分类暂无数据</text>
+    </view>
+  </scroll-view>
+</view>

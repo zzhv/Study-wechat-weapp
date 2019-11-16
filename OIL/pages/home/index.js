@@ -16,7 +16,7 @@ Component({
     }
   },
   data: {
-    time: ''
+    time: '',
   },
   methods: {
     getTime: function() {
