@@ -4,7 +4,8 @@
     "pages/home/index",
     "pages/me/index",
     "pages/account/changePassword/index",
-    "pages/options/index"
+    "pages/options/index",
+    "pages/options/entry/index"
   ],
   "tabBar": {
     "color": "#7A7E83",

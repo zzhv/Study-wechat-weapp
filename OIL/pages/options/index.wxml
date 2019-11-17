@@ -11,9 +11,8 @@
       <block wx:for="{{cateItems[curIndex].children}}" wx:key="{{index}}">
         <view class="nav_right_items">
           <!--界面跳转 -->
-          <navigator url="../../detail/detail">
+          <navigator url="/pages/options/{{item.navigator}}/index">
             <image src="../../image/options.png"></image>
-            <!-- <image src="{{item.image}}"></image> -->
             <text>{{item.name}}</text>
           </navigator>
         </view>
@@ -21,8 +20,8 @@
     </view>
     <!--如果无数据，则显示数据-->
     <view class="nocate" wx:else>
-      <image src="../../image/options.png"></image>
-      <text>该分类暂无数据</text>
+      <image src="../../image/close.png"></image>
+      <text>无权查看该分类</text>
     </view>
   </scroll-view>
 </view>

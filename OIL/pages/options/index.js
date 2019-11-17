@@ -11,7 +11,7 @@ Page({
    */
   data: {
     cateItems: [],
-    curNav: 0,
+    curNav: 1,
     curIndex: 0
   },
   switchRightTab: function(e) {
@@ -27,12 +27,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     xx.xGet({
       url: 'Options/GetCateitems',
       success: res => {
-        console.log(res);
         this.setData({
-          cateItems:res.data.data
+          cateItems: res.data.data
+        },()=>{
+          wx.hideLoading()
         })
       }
     })
@@ -42,7 +46,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    wx.hideLoading() //showLoading 只能用此语句关闭
   },
 
   /**
