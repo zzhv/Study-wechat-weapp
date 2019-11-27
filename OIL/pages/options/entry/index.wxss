@@ -1,1 +1,11 @@
-/* pages/options/entry/index.wxss */
+page{
+    background-color: #FFFFFF;
+}
+picker{margin-bottom:16px;}
+.hr {
+  border: 1px solid #ccc;
+  opacity: 0.2;
+  width: 90%;
+  margin: 0 auto;
+  background-color:#1296db;
+}

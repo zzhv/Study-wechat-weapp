@@ -1,4 +1,4 @@
-{
+  {
   "component": true,
   "usingComponents": {
     "mp-toptips": "../../components/toptips/toptips",
